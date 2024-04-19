@@ -1,0 +1,73 @@
+//class
+package codsoft;
+
+import java.util.Scanner;
+
+public class User1 extends Atm {
+    static int currentBalance = 1000;
+
+    public void greetCustomer() {
+        System.out.println("hello, welcome to the banking sector");
+    }
+
+    public void deposit(int amount) {
+        currentBalance = currentBalance + amount;
+        System.out.println("Amount deposited successfully");
+    }
+
+    public void withdrawn(int amount) {
+    	if (amount <= currentBalance) {
+            currentBalance -= amount;
+            System.out.println("Withdrawal successful. Current balance is: " + currentBalance);
+        } else {
+            System.out.println("Insufficient balance. Withdrawal failed.");
+        }
+        
+    }
+
+    public int checkCurrentBalance() {
+        return currentBalance;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        User1 bank = new User1();
+        
+        boolean continueLoop = true;
+        
+        while(continueLoop) {
+            System.out.println("Current balance is: " + bank.checkCurrentBalance());
+            
+            System.out.println("Enter 1 to deposit");
+            System.out.println("Enter 2 to withdraw");
+            System.out.println("Enter any other number to exit");
+            int choice = sc.nextInt();
+            
+            switch(choice) {
+                case 1:
+                    System.out.println("Enter the amount you want to deposit:");
+                    int depositAmount = sc.nextInt();
+                    bank.deposit(depositAmount);
+                    break;
+                case 2:
+                    System.out.println("Enter the amount you want to withdraw:");
+                    int withdrawAmount = sc.nextInt();
+                    bank.withdrawn(withdrawAmount);
+                    break;
+                default:
+                    continueLoop = false;
+                    break;
+            }
+        }
+    }
+}
+//Interface
+package prasanna9;
+
+public abstract class Atm  {
+	public abstract void greetCustomer();
+	public abstract void deposit(int amount);
+	public abstract void withdrawn(int amount);
+	public abstract int checkCurrentBalance();
+
+}
+

@@ -1,0 +1,46 @@
+package prasanna9;
+
+import java.util.Scanner;
+
+public class GradeCalculator {
+	public static void main(String[] args){
+
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter the number of subjects");
+		int i=sc.nextInt();
+		int total=0;
+		float marks=0;
+		for (int j=1;j<=i;j++){
+		System.out.printf("enter the marks of %d subject",j);
+		marks=sc.nextFloat();
+
+		}
+		for(int k=1;k<=i;k++) {
+			total+=marks;
+			
+		}
+		//System.out.println(total);
+		int aveg=total/i;
+		//System.out.println(aveg);
+		char grade;
+		if(aveg>=90) {
+			grade='A';
+		}
+		else if(aveg>=80) {
+			grade='B';
+		}
+		else if(aveg>=70) {
+			grade='C';
+		}
+		else if(aveg>=60) {
+			grade='D';
+		}
+		else {
+			grade='F';
+		}
+		System.out.println("Total Marks:"+total);
+		System.out.println("Average Percentage:"+aveg);
+		System.out.println("Grade:"+grade);
+		
+	}
+}
